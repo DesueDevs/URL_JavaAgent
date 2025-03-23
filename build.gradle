@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.bytebuddy:byte-buddy:1.17.2'
+}
+
+shadowJar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.Main',
+                'Premain-Class': 'org.example.Main'
+        )
+    }
+
+}
+
+test {
+    useJUnitPlatform()
+}
